@@ -23,7 +23,7 @@ export default function ResultPage() {
               测评报告
             </p>
             <h1 className="mt-2 text-2xl font-semibold leading-tight">
-              灵魂欲望测评 · DeepSeek 生成
+              灵魂欲望测评
             </h1>
           </div>
           <button

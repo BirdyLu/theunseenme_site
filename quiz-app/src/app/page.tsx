@@ -411,7 +411,7 @@ export default function Home() {
         {apiState.status === "success" && (
           <section className="mt-6 rounded-2xl bg-zinc-50 p-4 text-sm leading-relaxed text-zinc-950">
             <h2 className="mb-2 text-xs font-semibold tracking-[0.16em] text-zinc-500">
-              测评结果（来自 DeepSeek）
+              测评结果
             </h2>
             <pre className="whitespace-pre-wrap break-words text-[13px] leading-relaxed">
               {apiState.content}
