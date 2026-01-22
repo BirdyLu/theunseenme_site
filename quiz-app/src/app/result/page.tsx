@@ -15,8 +15,8 @@ export default function ResultPage() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-50">
-      <main className="mx-auto flex min-h-screen max-w-xl flex-col px-4 pb-10 pt-8">
+    <div className="min-h-screen w-full overflow-x-hidden bg-zinc-950 text-zinc-50">
+      <main className="mx-auto flex min-h-screen w-full max-w-xl flex-col px-4 pb-10 pt-8">
         <header className="mb-6 flex items-center justify-between">
           <div>
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-400">
@@ -46,7 +46,7 @@ export default function ResultPage() {
             <h2 className="mb-2 text-xs font-semibold tracking-[0.16em] text-zinc-500">
               报告正文
             </h2>
-            <pre className="whitespace-pre-wrap break-words text-[13px] leading-relaxed">
+            <pre className="whitespace-pre-wrap break-words overflow-x-auto text-[13px] leading-relaxed max-w-full">
               {report}
             </pre>
           </section>

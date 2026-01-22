@@ -192,8 +192,8 @@ export default function Home() {
 
   if (!verified) {
     return (
-      <div className="min-h-screen bg-zinc-950 text-zinc-50">
-        <main className="mx-auto flex min-h-screen max-w-xl flex-col items-center justify-center px-4 pb-10 pt-8">
+      <div className="min-h-screen w-full overflow-x-hidden bg-zinc-950 text-zinc-50">
+        <main className="mx-auto flex min-h-screen w-full max-w-xl flex-col items-center justify-center px-4 pb-10 pt-8">
           <div className="w-full rounded-2xl bg-zinc-900/70 p-6 shadow-lg shadow-black/40">
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-400">
               进入测评前
@@ -235,8 +235,8 @@ export default function Home() {
 
   if (verified && !quizStarted) {
     return (
-      <div className="min-h-screen bg-zinc-950 text-zinc-50">
-        <main className="mx-auto flex min-h-screen max-w-xl flex-col px-4 pb-10 pt-8">
+      <div className="min-h-screen w-full overflow-x-hidden bg-zinc-950 text-zinc-50">
+        <main className="mx-auto flex min-h-screen w-full max-w-xl flex-col px-4 pb-10 pt-8">
           <div className="w-full rounded-2xl bg-zinc-900/70 p-5 shadow-lg shadow-black/40">
             <div className="relative mb-4 h-48 w-full overflow-hidden rounded-xl bg-zinc-900">
               <Image
@@ -250,7 +250,7 @@ export default function Home() {
             <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-400">
               温馨提示｜请先阅读
             </p>
-            <div className="mt-3 space-y-3 text-sm leading-relaxed text-zinc-100">
+            <div className="mt-3 space-y-3 text-sm leading-relaxed text-zinc-100 break-words">
               <p>
                 本测试仅供娱乐与自我探索参考，不构成任何心理评估、诊断或现实预测。结果不是对你的定义，更不是结论。
               </p>
@@ -274,8 +274,8 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-50">
-      <main className="mx-auto flex min-h-screen max-w-xl flex-col px-4 pb-10 pt-8">
+    <div className="min-h-screen w-full overflow-x-hidden bg-zinc-950 text-zinc-50">
+      <main className="mx-auto flex min-h-screen w-full max-w-xl flex-col px-4 pb-10 pt-8">
         <header className="mb-6">
           <p className="text-xs font-medium uppercase tracking-[0.2em] text-zinc-400">
             灵魂欲望测评
@@ -320,7 +320,7 @@ export default function Home() {
           </div>
 
           <div className="rounded-2xl bg-zinc-900/70 p-5 shadow-lg shadow-black/40">
-            <p className="text-sm leading-relaxed text-zinc-100">
+            <p className="text-sm leading-relaxed text-zinc-100 break-words">
               {currentQuestion.prompt}
             </p>
 
@@ -349,7 +349,7 @@ export default function Home() {
                     >
                       {option.key}
                     </span>
-                    <span className="leading-relaxed">{option.label}</span>
+                    <span className="leading-relaxed break-words">{option.label}</span>
                   </button>
                 );
               })}
@@ -417,7 +417,7 @@ export default function Home() {
             <h2 className="mb-2 text-xs font-semibold tracking-[0.16em] text-zinc-500">
               测评结果
             </h2>
-            <pre className="whitespace-pre-wrap break-words text-[13px] leading-relaxed">
+            <pre className="whitespace-pre-wrap break-words overflow-x-auto text-[13px] leading-relaxed max-w-full">
               {apiState.content}
             </pre>
           </section>
