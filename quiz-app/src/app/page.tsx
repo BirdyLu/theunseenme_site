@@ -122,6 +122,7 @@ export default function Home() {
     setApiState({ status: "loading" });
 
     try {
+      // 使用相对路径，Next.js 的 basePath 会自动处理
       const res = await fetch("/api/deepseek", {
         method: "POST",
         headers: {
