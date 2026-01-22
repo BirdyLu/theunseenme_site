@@ -28,17 +28,14 @@ export async function POST(request: Request) {
 
     const body = (await request.json()) as RequestBody;
 
-    const userContent = JSON.stringify(
-      {
-        type: "灵魂欲望测评 - 答案记录",
-        description:
-          "下面是用户在 12 道题中的选择，请基于这些内容生成测评报告。",
-        answers: body.answers,
-      },
-      null,
-      2,
-    );
+    // 优化：使用紧凑的 JSON 格式，减少 token 数
+    const userContent = JSON.stringify({
+      type: "灵魂欲望测评 - 答案记录",
+      description: "下面是用户在 12 道题中的选择，请基于这些内容生成测评报告。",
+      answers: body.answers,
+    });
 
+    // 不设置超时，确保用户能拿到完整的报告
     const dsResponse = await fetch(DEEPSEEK_API_URL, {
       method: "POST",
       headers: {
@@ -57,6 +54,9 @@ export async function POST(request: Request) {
             content: userContent,
           },
         ],
+        // 优化参数以提升响应速度
+        temperature: 0.7, // 降低随机性，加快生成
+        max_tokens: 600, // 限制最大 token 数（7句×3部分≈600 tokens）
       }),
     });
 
