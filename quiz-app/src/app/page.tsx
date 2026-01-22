@@ -122,8 +122,27 @@ export default function Home() {
     setApiState({ status: "loading" });
 
     try {
-      // 使用相对路径，Next.js 的 basePath 会自动处理
-      const res = await fetch("/api/deepseek", {
+      // 手动构建包含 basePath 的 API URL
+      // Next.js 的 basePath 不会自动处理客户端 fetch，需要手动添加
+      // 优先使用环境变量，否则从当前 URL 自动检测
+      let apiUrl = "/api/deepseek";
+      if (typeof window !== "undefined") {
+        const envBasePath = process.env.NEXT_PUBLIC_BASE_PATH;
+        if (envBasePath) {
+          // 使用环境变量配置的 basePath
+          apiUrl = `${envBasePath.replace(/\/$/, "")}/api/deepseek`;
+        } else {
+          // 从当前 URL 自动检测 basePath
+          const pathname = window.location.pathname;
+          // 提取第一个路径段作为 basePath（例如：/soulcolour -> /soulcolour）
+          const pathParts = pathname.split("/").filter(Boolean);
+          if (pathParts.length > 0 && pathParts[0] !== "api" && pathParts[0] !== "result") {
+            apiUrl = `/${pathParts[0]}/api/deepseek`;
+          }
+        }
+      }
+      
+      const res = await fetch(apiUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
